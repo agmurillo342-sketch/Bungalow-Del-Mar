@@ -1,0 +1,38 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+
+  /* Bungalows Del Mar brand palette: deep navy + ocean turquoise */
+  --brand-navy: #0b3550;
+  --brand-navy-dark: #072a3d;
+  --brand-turquoise: #14b8a6;
+  --brand-turquoise-dark: #0f9488;
+  --brand-sand: #f7fafc;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-brand-navy: var(--brand-navy);
+  --color-brand-navy-dark: var(--brand-navy-dark);
+  --color-brand-turquoise: var(--brand-turquoise);
+  --color-brand-turquoise-dark: var(--brand-turquoise-dark);
+  --color-brand-sand: var(--brand-sand);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
