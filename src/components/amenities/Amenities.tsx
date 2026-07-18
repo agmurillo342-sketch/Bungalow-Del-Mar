@@ -48,13 +48,13 @@ const amenities: Amenity[] = [
 
 export function Amenities() {
   return (
-    <section id="amenidades" className="bg-white px-4 py-20 sm:py-28">
+    <section id="amenidades" className="bg-brand-navy px-4 py-20 sm:py-28">
       <div className="mx-auto max-w-5xl">
         <div className="mx-auto max-w-xl text-center">
           <p className="text-sm font-semibold uppercase tracking-widest text-brand-turquoise">
             La experiencia Bungalows Del Mar
           </p>
-          <h2 className="mt-2 text-3xl font-bold text-brand-navy sm:text-4xl">
+          <h2 className="mt-2 text-3xl font-bold text-white sm:text-4xl">
             Todo lo que necesitas para un descanso inolvidable
           </h2>
         </div>
@@ -63,15 +63,15 @@ export function Amenities() {
           {amenities.map(({ icon: Icon, title, description }) => (
             <li
               key={title}
-              className="rounded-2xl border border-slate-200 bg-brand-sand/60 p-7 transition hover:border-brand-turquoise/40 hover:bg-brand-sand"
+              className="rounded-2xl border border-white/10 bg-white/5 p-7 transition hover:border-brand-turquoise/40 hover:bg-white/10"
             >
-              <span className="inline-flex h-12 w-12 items-center justify-center rounded-full bg-brand-turquoise/10 text-brand-turquoise">
+              <span className="inline-flex h-12 w-12 items-center justify-center rounded-full bg-brand-turquoise/15 text-brand-turquoise">
                 <Icon className="h-6 w-6" />
               </span>
-              <h3 className="mt-5 text-lg font-semibold text-brand-navy">
+              <h3 className="mt-5 text-lg font-semibold text-white">
                 {title}
               </h3>
-              <p className="mt-2 text-slate-600">{description}</p>
+              <p className="mt-2 text-slate-300">{description}</p>
             </li>
           ))}
         </ul>

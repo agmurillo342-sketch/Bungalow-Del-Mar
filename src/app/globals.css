@@ -7,6 +7,7 @@
   /* Bungalows Del Mar brand palette: deep navy + ocean turquoise */
   --brand-navy: #0b3550;
   --brand-navy-dark: #072a3d;
+  --brand-teal-deep: #0c3a3d;
   --brand-turquoise: #14b8a6;
   --brand-turquoise-dark: #0f9488;
   --brand-sand: #f7fafc;
@@ -17,6 +18,7 @@
   --color-foreground: var(--foreground);
   --color-brand-navy: var(--brand-navy);
   --color-brand-navy-dark: var(--brand-navy-dark);
+  --color-brand-teal-deep: var(--brand-teal-deep);
   --color-brand-turquoise: var(--brand-turquoise);
   --color-brand-turquoise-dark: var(--brand-turquoise-dark);
   --color-brand-sand: var(--brand-sand);

@@ -11,16 +11,16 @@ export default function Home() {
 
       <section
         id="reservar"
-        className="flex flex-col items-center bg-brand-sand px-4 py-16 sm:py-24"
+        className="flex flex-col items-center bg-brand-teal-deep px-4 py-16 sm:py-24"
       >
         <div className="mb-10 max-w-md text-center">
           <p className="text-sm font-semibold uppercase tracking-widest text-brand-turquoise">
             {siteConfig.location}
           </p>
-          <h2 className="mt-2 text-3xl font-bold text-brand-navy sm:text-4xl">
+          <h2 className="mt-2 text-3xl font-bold text-white sm:text-4xl">
             Consulta tu disponibilidad
           </h2>
-          <p className="mx-auto mt-3 text-slate-600">
+          <p className="mx-auto mt-3 text-slate-300">
             Cuéntanos tus fechas y número de huéspedes; te respondemos directo
             por WhatsApp para confirmar tu reserva.
           </p>
