@@ -43,7 +43,7 @@ export function Hero({ property }: HeroProps) {
         </a>
       </div>
 
-      <div className="absolute bottom-4 right-4 sm:bottom-6 sm:right-6">
+      <div className="absolute bottom-4 right-4 z-20 sm:bottom-6 sm:right-6">
         <GalleryButton images={property.gallery} propertyName={property.name} />
       </div>
     </section>
