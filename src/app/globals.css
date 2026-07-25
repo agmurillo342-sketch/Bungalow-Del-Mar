@@ -11,6 +11,11 @@
   --brand-turquoise: #14b8a6;
   --brand-turquoise-dark: #0f9488;
   --brand-sand: #f7fafc;
+
+  /* Casa del Sol palette: warm terracotta/brown grounds + the same cool turquoise accent */
+  --sun-brown-dark: #3a2115;
+  --sun-terracotta: #5c3220;
+  --sun-amber-deep: #6b4a1f;
 }
 
 @theme inline {
@@ -22,6 +27,9 @@
   --color-brand-turquoise: var(--brand-turquoise);
   --color-brand-turquoise-dark: var(--brand-turquoise-dark);
   --color-brand-sand: var(--brand-sand);
+  --color-sun-brown-dark: var(--sun-brown-dark);
+  --color-sun-terracotta: var(--sun-terracotta);
+  --color-sun-amber-deep: var(--sun-amber-deep);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }

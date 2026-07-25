@@ -16,12 +16,13 @@ function formatDate(isoDate: string): string {
 
 export function buildWhatsappReservationUrl(
   phoneNumber: string,
+  propertyName: string,
   inquiry: ReservationInquiry
 ): string {
   const digitsOnly = phoneNumber.replace(/\D/g, "");
 
   const message = [
-    "¡Hola! Me gustaría consultar disponibilidad en Bungalows Del Mar.",
+    `¡Hola! Me gustaría consultar disponibilidad en ${propertyName}.`,
     "",
     `Nombre: ${inquiry.name}`,
     `Fecha de entrada: ${formatDate(inquiry.checkIn)}`,

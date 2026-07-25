@@ -2,7 +2,6 @@
 
 import { useState, type FormEvent } from "react";
 import { WhatsAppIcon } from "@/components/icons/WhatsAppIcon";
-import { siteConfig } from "@/config/site";
 import { buildWhatsappReservationUrl } from "@/lib/whatsapp";
 
 interface FormState {
@@ -55,7 +54,15 @@ const inputClassName =
 
 const labelClassName = "mb-1.5 block text-sm font-medium text-brand-navy";
 
-export function ReservationForm() {
+interface ReservationFormProps {
+  propertyName: string;
+  whatsappNumber: string;
+}
+
+export function ReservationForm({
+  propertyName,
+  whatsappNumber,
+}: ReservationFormProps) {
   const [form, setForm] = useState<FormState>(initialState);
   const [errors, setErrors] = useState<FormErrors>({});
 
@@ -74,7 +81,7 @@ export function ReservationForm() {
       return;
     }
 
-    const url = buildWhatsappReservationUrl(siteConfig.whatsappNumber, {
+    const url = buildWhatsappReservationUrl(whatsappNumber, propertyName, {
       name: form.name.trim(),
       checkIn: form.checkIn,
       checkOut: form.checkOut,

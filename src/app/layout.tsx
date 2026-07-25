@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import { SiteMenu } from "@/components/navigation/SiteMenu";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -26,9 +27,13 @@ export default function RootLayout({
   return (
     <html
       lang="es"
+      data-scroll-behavior="smooth"
       className={`${geistSans.variable} ${geistMono.variable} h-full scroll-smooth antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">
+        <SiteMenu />
+        {children}
+      </body>
     </html>
   );
 }

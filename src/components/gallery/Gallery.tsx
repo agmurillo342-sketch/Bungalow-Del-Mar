@@ -2,7 +2,8 @@
 
 import Image from "next/image";
 import { useEffect, useState, type SVGProps } from "react";
-import { galleryImages } from "@/config/gallery";
+import { createPortal } from "react-dom";
+import type { GalleryImage } from "@/config/gallery";
 
 function GalleryIcon(props: SVGProps<SVGSVGElement>) {
   return (
@@ -60,7 +61,12 @@ function ChevronIcon({
   );
 }
 
-export function GalleryButton() {
+interface GalleryButtonProps {
+  images: GalleryImage[];
+  propertyName: string;
+}
+
+export function GalleryButton({ images, propertyName }: GalleryButtonProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [activeIndex, setActiveIndex] = useState(0);
 
@@ -73,10 +79,10 @@ export function GalleryButton() {
     function handleKeyDown(event: KeyboardEvent) {
       if (event.key === "Escape") setIsOpen(false);
       if (event.key === "ArrowRight") {
-        setActiveIndex((i) => (i + 1) % galleryImages.length);
+        setActiveIndex((i) => (i + 1) % images.length);
       }
       if (event.key === "ArrowLeft") {
-        setActiveIndex((i) => (i - 1 + galleryImages.length) % galleryImages.length);
+        setActiveIndex((i) => (i - 1 + images.length) % images.length);
       }
     }
 
@@ -85,17 +91,17 @@ export function GalleryButton() {
       document.body.style.overflow = previousOverflow;
       window.removeEventListener("keydown", handleKeyDown);
     };
-  }, [isOpen]);
+  }, [isOpen, images.length]);
 
   function showNext() {
-    setActiveIndex((i) => (i + 1) % galleryImages.length);
+    setActiveIndex((i) => (i + 1) % images.length);
   }
 
   function showPrev() {
-    setActiveIndex((i) => (i - 1 + galleryImages.length) % galleryImages.length);
+    setActiveIndex((i) => (i - 1 + images.length) % images.length);
   }
 
-  const active = galleryImages[activeIndex];
+  const active = images[activeIndex];
 
   return (
     <>
@@ -111,62 +117,64 @@ export function GalleryButton() {
         Ver galería
       </button>
 
-      {isOpen && (
-        <div
-          role="dialog"
-          aria-modal="true"
-          aria-label="Galería de fotos de Bungalows Del Mar"
-          className="fixed inset-0 z-50 flex flex-col bg-brand-navy-dark/95 backdrop-blur-sm"
-          onClick={(event) => {
-            if (event.target === event.currentTarget) setIsOpen(false);
-          }}
-        >
-          <div className="flex items-center justify-between px-4 py-4 sm:px-6">
-            <p className="text-sm font-medium tabular-nums text-white/80">
-              {activeIndex + 1} / {galleryImages.length}
-            </p>
-            <button
-              type="button"
-              onClick={() => setIsOpen(false)}
-              aria-label="Cerrar galería"
-              className="rounded-full p-2 text-white/80 transition hover:bg-white/10 hover:text-white"
-            >
-              <CloseIcon className="h-6 w-6" />
-            </button>
-          </div>
-
-          <div className="relative flex flex-1 items-center justify-center px-2 pb-6 sm:px-6">
-            <button
-              type="button"
-              onClick={showPrev}
-              aria-label="Foto anterior"
-              className="absolute left-2 top-1/2 z-10 -translate-y-1/2 rounded-full bg-white/10 p-2 text-white transition hover:bg-white/20 sm:left-6 sm:p-3"
-            >
-              <ChevronIcon direction="left" className="h-5 w-5 sm:h-6 sm:w-6" />
-            </button>
-
-            <div className="relative h-full w-full max-w-4xl">
-              <Image
-                key={active.src}
-                src={active.src}
-                alt={active.alt}
-                fill
-                sizes="(min-width: 768px) 80vw, 100vw"
-                className="object-contain"
-              />
+      {isOpen &&
+        createPortal(
+          <div
+            role="dialog"
+            aria-modal="true"
+            aria-label={`Galería de fotos de ${propertyName}`}
+            className="fixed inset-0 z-50 flex flex-col bg-brand-navy-dark/95 backdrop-blur-sm"
+            onClick={(event) => {
+              if (event.target === event.currentTarget) setIsOpen(false);
+            }}
+          >
+            <div className="flex items-center justify-between px-4 py-4 sm:px-6">
+              <p className="text-sm font-medium tabular-nums text-white/80">
+                {activeIndex + 1} / {images.length}
+              </p>
+              <button
+                type="button"
+                onClick={() => setIsOpen(false)}
+                aria-label="Cerrar galería"
+                className="rounded-full p-2 text-white/80 transition hover:bg-white/10 hover:text-white"
+              >
+                <CloseIcon className="h-6 w-6" />
+              </button>
             </div>
 
-            <button
-              type="button"
-              onClick={showNext}
-              aria-label="Foto siguiente"
-              className="absolute right-2 top-1/2 z-10 -translate-y-1/2 rounded-full bg-white/10 p-2 text-white transition hover:bg-white/20 sm:right-6 sm:p-3"
-            >
-              <ChevronIcon direction="right" className="h-5 w-5 sm:h-6 sm:w-6" />
-            </button>
-          </div>
-        </div>
-      )}
+            <div className="relative flex flex-1 items-center justify-center px-2 pb-6 sm:px-6">
+              <button
+                type="button"
+                onClick={showPrev}
+                aria-label="Foto anterior"
+                className="absolute left-2 top-1/2 z-10 -translate-y-1/2 rounded-full bg-white/10 p-2 text-white transition hover:bg-white/20 sm:left-6 sm:p-3"
+              >
+                <ChevronIcon direction="left" className="h-5 w-5 sm:h-6 sm:w-6" />
+              </button>
+
+              <div className="relative h-full w-full max-w-4xl">
+                <Image
+                  key={active.src}
+                  src={active.src}
+                  alt={active.alt}
+                  fill
+                  sizes="(min-width: 768px) 80vw, 100vw"
+                  className="object-contain"
+                />
+              </div>
+
+              <button
+                type="button"
+                onClick={showNext}
+                aria-label="Foto siguiente"
+                className="absolute right-2 top-1/2 z-10 -translate-y-1/2 rounded-full bg-white/10 p-2 text-white transition hover:bg-white/20 sm:right-6 sm:p-3"
+              >
+                <ChevronIcon direction="right" className="h-5 w-5 sm:h-6 sm:w-6" />
+              </button>
+            </div>
+          </div>,
+          document.body
+        )}
     </>
   );
 }

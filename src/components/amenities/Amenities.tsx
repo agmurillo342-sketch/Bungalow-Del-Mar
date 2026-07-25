@@ -6,6 +6,7 @@ import {
   SpacesIcon,
   TvIcon,
 } from "@/components/icons/AmenityIcons";
+import type { Property } from "@/config/properties";
 
 interface Amenity {
   icon: ComponentType<SVGProps<SVGSVGElement>>;
@@ -46,13 +47,20 @@ const amenities: Amenity[] = [
   },
 ];
 
-export function Amenities() {
+interface AmenitiesProps {
+  property: Property;
+}
+
+export function Amenities({ property }: AmenitiesProps) {
   return (
-    <section id="amenidades" className="bg-brand-navy px-4 py-20 sm:py-28">
+    <section
+      id="amenidades"
+      className={`px-4 py-20 sm:py-28 ${property.theme.amenitiesBg}`}
+    >
       <div className="mx-auto max-w-5xl">
         <div className="mx-auto max-w-xl text-center">
           <p className="text-sm font-semibold uppercase tracking-widest text-brand-turquoise">
-            La experiencia Bungalows Del Mar
+            La experiencia {property.name}
           </p>
           <h2 className="mt-2 text-3xl font-bold text-white sm:text-4xl">
             Todo lo que necesitas para un descanso inolvidable
