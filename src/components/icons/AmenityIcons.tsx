@@ -62,3 +62,14 @@ export function TvIcon(props: SVGProps<SVGSVGElement>) {
     </svg>
   );
 }
+
+export function PoolIcon(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg {...baseProps} {...props} aria-hidden="true">
+      <rect x="2.5" y="6" width="19" height="13" rx="2" />
+      <path d="M4 11.5c1.2 1 2.3 1 3.5 0s2.3-1 3.5 0 2.3 1 3.5 0 2.3-1 3.5 0 2.3 1 3.5 0" />
+      <path d="M4 15.5c1.2 1 2.3 1 3.5 0s2.3-1 3.5 0 2.3 1 3.5 0 2.3-1 3.5 0 2.3 1 3.5 0" />
+      <path d="M17 3v3M19 3v3" />
+    </svg>
+  );
+}

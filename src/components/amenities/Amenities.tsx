@@ -3,6 +3,7 @@ import {
   BathIcon,
   BedroomIcon,
   KitchenIcon,
+  PoolIcon,
   SpacesIcon,
   TvIcon,
 } from "@/components/icons/AmenityIcons";
@@ -44,6 +45,12 @@ const amenities: Amenity[] = [
     title: "Sala con Smart TV",
     description:
       "Un espacio de entretenimiento listo para las noches en familia o con amigos.",
+  },
+  {
+    icon: PoolIcon,
+    title: "Piscina",
+    description:
+      "Refréscate en la piscina privada, perfecta para relajarte en familia o con amigos.",
   },
 ];
 
